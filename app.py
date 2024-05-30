@@ -1,20 +1,20 @@
 from flask import Flask,render_template,request
-import pickle
+from joblib import load
 import numpy as np
 
 app = Flask(__name__)
 
 with open("one_hot_encoder.pkl", "rb") as f:
-    one_hot_encoder = pickle.load(f)
+    one_hot_encoder = load(f)
 
 with open("yj.pkl", "rb") as f:
-    yeo_johnson_transformer = pickle.load(f)
+    yeo_johnson_transformer = load(f)
 
 with open("standard_scaler.pkl", "rb") as f:
-    standard_scaler = pickle.load(f)
+    standard_scaler = load(f)
 
 with open("best_model.pkl", "rb") as f:
-    model = pickle.load(f)
+    model = load(f)
 
 categorical_columns = [
     'age_group','hours_per_week_bins','workclass','education','marital.status','occupation','relationship','race','sex'
